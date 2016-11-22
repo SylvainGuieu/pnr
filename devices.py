@@ -65,15 +65,24 @@ def loadMotors(to):
     
     say("loading motorized devices ...")
 
-    say("    INS.OPTI1 device ->  `mirror`")
-    to['mirror'] = vlt.devices.Motor(ics.restrict("INS.OPTI1"), statusItems=["INS.OPTI1"], proc=pnoc)
+    say("    INS.OPTI1 device ->  `cfou`, `opti1`")
+    to['cfou'] = vlt.devices.Motor(ics.restrict("INS.OPTI1"), statusItems=["INS.OPTI1"], proc=pnoc)
+    to['opti1'] = to['cfou']
 
-    say("    INS.OPTI2 device ->  `dycro`")
-    to['dycro']  = vlt.devices.Motor(ics.restrict("INS.OPTI2"), statusItems=["INS.OPTI2"], proc=pnoc)
+    say("    INS.OPTI2 device ->  `disp`, `opti2`")
+    to['disp']  = vlt.devices.Motor(ics.restrict("INS.OPTI2"), statusItems=["INS.OPTI2"], proc=pnoc)
+    to['opti2'] = to['disp']
 
-    say("    INS.OPTI3 device ->  `disp`")
-    to['disp']   = vlt.devices.Motor(ics.restrict("INS.OPTI3"), statusItems=["INS.OPTI3"], proc=pnoc)
+    say("    INS.OPTI3 device ->  `iobcx`, `opti3`")
+    to['iobcx']   = vlt.devices.Motor(ics.restrict("INS.OPTI3"), statusItems=["INS.OPTI3"], proc=pnoc)
+    to['opti3'] = to['iobcx']
 
+    say("    INS.OPTI4 device ->  `iobcx`, `opti4`")
+    to['iobcy']   = vlt.devices.Motor(ics.restrict("INS.OPTI4"), statusItems=["INS.OPTI4"], proc=pnoc)
+    to['opti4'] = to['iobcy']
 
+def loadLamp(to):
+    ics  = to['ics']
+    
 
 
