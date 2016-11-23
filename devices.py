@@ -8,6 +8,7 @@ def loadDevices(to):
     loadMotors(to)
     loadShutters(to)
     loadDetector(to)
+    loadLamp(to)
 
 def loadDetector(to):    
     pndict = to['pndict']
@@ -82,7 +83,20 @@ def loadMotors(to):
     to['opti4'] = to['iobcy']
 
 def loadLamp(to):
+    """ Loading pionier lamps """
     ics  = to['ics']
+    pnoc = to['pnoc']
+
+    say("loading lamp devices ...")
+
+    say("    INS.LAMP1 device ->  `hal`, `lamp1`")
+    to['lamp1'] = vlt.devices.Motor(ics.restrict("INS.LAMP1"), statusItems=["INS.LAMP1"], proc=pnoc)
+    to['hal'] = to['lamp1']
+
+    say("    INS.LAMP2 device ->  `sled`, `lamp2`")
+    to['lamp2'] = vlt.devices.Motor(ics.restrict("INS.LAMP2"), statusItems=["INS.LAMP2"], proc=pnoc)
+    to['sled'] = to['lamp2']
     
+
 
 
